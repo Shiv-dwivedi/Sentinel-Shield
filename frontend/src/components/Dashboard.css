@@ -1,0 +1,440 @@
+/* DashboardStyles.css */
+
+/* — Theme Variables — */
+:root {
+  --c-bg:       #ffffff;
+  --c-fore:     #333333;
+  --c-muted:    #666666;
+  --c-light:    #e0e0e0;
+  --c-primary:  #1e90ff;
+  --c-success:  #27ae60;
+  --c-danger:   #e74c3c;
+  --c-info:     #2980b9;
+  --c-accent:   #8e44ad;
+  --transition: 0.3s ease-in-out;
+  --radius:     10px;
+  --shadow:     0 6px 18px rgba(0,0,0,0.08);
+  --section-pad: 1.5rem;
+}
+
+/* Radar Container */
+.ld-radar-container {
+  position: relative;
+  width: 240px;
+  height: 240px;
+  margin: 0 auto;
+}
+
+/* Scores Container */
+.ld-radar-scores {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Individual Score Styling */
+.ld-radar-score {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #ddd;
+  padding: 2px 8px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transition: opacity 0.2s;
+  font-size: 12px;
+  font-weight: bold;
+  color: #333;
+}
+
+.ld-radar-container:hover .ld-radar-score {
+  opacity: 1;
+}
+
+
+.ld-name {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  /* Remove flex-wrap: wrap */
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+.ld-edit-name {
+  font-size: 1rem;
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.ld-pen {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--c-muted);
+  padding: 0;
+  display: flex;
+  /* align-items: center; */
+}
+
+.ld-pen:hover {
+  color: var(--c-primary);
+}
+
+
+.ld-side-by-side {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.ld-section-1 {
+  flex: 1 1 200px; /* grow, shrink, base width */
+  min-width: 200px;
+  min-height: 200px;
+  padding: 1.5rem;
+  background: var(--c-bg-muted);
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+ 
+}
+
+
+
+
+.ld-temp-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.ld-radar-wrap {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+.radar-tooltip {
+  position: absolute;
+  background: var(--c-bg);
+  color: var(--c-text);
+  border: 1px solid var(--c-border);
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 12px;
+  pointer-events: none;
+  z-index: 10;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+
+/* — Global & Reset — */
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0;
+  background: var(--c-bg);
+  color: var(--c-fore);
+  font-family: "Segoe UI", sans-serif;
+}
+.lightdash-root {
+  max-width: 960px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+/* — Section Wrapper — */
+.ld-section {
+  background: var(--c-bg);
+  padding: var(--section-pad);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-bottom: var(--section-pad);
+  transition: box-shadow var(--transition);
+}
+.ld-section:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+}
+
+/* — Loading & Error — */
+.ld-loading,
+.ld-error {
+  text-align: center;
+  padding: 3rem;
+  font-size: 1.2rem;
+}
+.ld-error { color: var(--c-danger); }
+
+/* — Header — */
+.ld-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--c-bg);
+  padding: 1rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+}
+.ld-refresh {
+  background: var(--c-success);
+  border: none;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background var(--transition), transform var(--transition);
+  white-space: nowrap;
+  max-width: 200px;
+  flex-shrink: 0;
+}
+.ld-refresh:hover {
+  background: #1e8449;
+  transform: translateY(-2px);
+}
+.ld-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--c-primary);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+.ld-userinfo {
+  flex-grow: 1;
+  text-align: left;
+}
+
+.ld-userinfo h1 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.ld-userinfo h1  {
+  color: var(--c-primary);
+}
+.ld-email,
+.ld-updated {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--c-muted);
+}
+
+
+.ld-userinfo p {
+  margin: 0.25rem 0;
+  color: var(--c-muted-foreground);
+  font-size: 0.875rem;
+}
+
+/* — Gauges — */
+.ld-gauges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: space-around;
+}
+.ld-gauge {
+  text-align: center;
+  width: 140px;
+  transition: transform var(--transition), box-shadow var(--transition);
+  border-radius: var(--radius);
+}
+.ld-gauge:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+.ld-gauge-bg,
+.ld-gauge-fg {
+  transition: stroke-dashoffset 0.6s var(--transition);
+}
+.ld-gauge-fg {
+  transform: rotate(-90deg);
+  transform-origin: center;
+}
+.ld-gauge-txt {
+  fill: var(--c-fore);
+  font-size: 1rem;
+  font-weight: bold;
+}
+.ld-gauge-label {
+  margin-top: 0.6rem;
+  font-size: 0.9rem;
+  color: var(--c-muted);
+}
+
+/* — Temp-Mail — */
+.ld-temp h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  color: var(--c-primary);
+}
+.ld-temp p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+.ld-temp code {
+  background: #f0f0f0;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+}
+
+
+
+/* — Radar — */
+.ld-radar-wrap h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  color: var(--c-info);
+}
+
+.ld-radar {
+  width: 100% !important;
+  height: auto !important;
+  max-width: 240px;
+  margin: 0 auto;
+}
+
+
+/* — Malicious Sites — */
+.ld-malicious h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  color: var(--c-danger);
+}
+.ld-malicious ul {
+  list-style: none;
+  padding: 0; margin: 0;
+}
+.ld-malicious li {
+  display: flex; justify-content: space-between;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--c-light);
+  transition: background var(--transition);
+}
+.ld-malicious li:hover { background: #fafafa; }
+.ld-domain {
+  font-weight: 500;
+  color: var(--c-foreground);
+  flex: 1;
+}
+.ld-meta {
+  font-size: 0.875rem;
+  color: var(--c-muted-foreground);
+  white-space: nowrap;
+  text-align: right;
+  min-width: 140px;
+}
+
+
+/* — Password Ratings — */
+.ld-passratings h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  color: var(--c-accent);
+}
+.ld-passratings table {
+  width: 100%; border-collapse: collapse; margin-top: 0.5rem;
+}
+.ld-passratings th,
+.ld-passratings td {
+  padding: 0.8rem;
+  border: 1px solid var(--c-light);
+  font-size: 0.9rem;
+  text-align: left;
+}
+.ld-passratings th {
+  background: #f7f7f7;
+}
+.ld-passratings tr:nth-child(even) {
+  background: #fafafa;
+}
+.ld-passratings tr:hover {
+  background: #f5f5f5;
+}
+
+/* — Breach Information — */
+.ld-breaches h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  color: var(--c-primary);
+}
+.ld-breaches input.ld-filter {
+  width: 100%;
+  padding: 0.6rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--c-light);
+  border-radius: var(--radius);
+  transition: border-color var(--transition);
+}
+.ld-breaches input.ld-filter:focus {
+  outline: none;
+  border-color: var(--c-primary);
+}
+.ld-breaches table {
+  width: 100%; border-collapse: collapse;
+}
+.ld-breaches th,
+.ld-breaches td {
+  padding: 0.8rem;
+  border: 1px solid var(--c-light);
+  font-size: 0.9rem;
+  text-align: left;
+}
+.ld-breaches th {
+  background: #f7f7f7;
+}
+.ld-breaches tr:nth-child(even) {
+  background: #fafafa;
+}
+.ld-breaches tr:hover {
+  background: #f5f5f5;
+}
+
+/* — Responsive — */
+@media (max-width: 768px) {
+  .ld-gauges {
+    flex-direction: column;
+    align-items: center;
+  }
+  .ld-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .ld-refresh {
+    margin-top: 1rem;
+    align-self: stretch;
+    width: 100%;
+  }
+  .ld-userinfo {
+    width: 100%;
+  }
+  .ld-radar {
+    width: 100%;
+    height: auto;
+  }
+}
