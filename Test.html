@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🧪 Autofill Demo</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: #1e1e2f;
+      color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+      overflow-y: scroll;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: auto;
+      padding: 2rem;
+    }
+
+    h1 {
+      text-align: center;
+      color: #00e0ff;
+    }
+
+    label {
+      display: block;
+      margin: 1rem 0 0.3rem;
+      font-weight: bold;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 0.7rem;
+      border: none;
+      border-radius: 8px;
+      background: #2d2d40;
+      color: white;
+      font-size: 1rem;
+    }
+
+    input:focus, select:focus {
+      outline: 2px solid #00e0ff;
+    }
+
+    .dob-selects {
+      display: flex;
+      gap: 10px;
+    }
+
+    .dob-selects select {
+      flex: 1;
+    }
+
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🧪 Autofill Test Form</h1>
+
+    <label for="firstName">First Name</label>
+    <input type="text" id="firstName" name="first_name"/>
+
+    <label for="middleName">Middle Name</label>
+    <input type="text" id="middleName" name="middle_name"/>
+
+    <label for="lastName">Last Name</label>
+    <input type="text" id="lastName" name="last_name"/>
+
+    <label for="fullName">Full Name</label>
+    <input type="text" id="fullName" name="fullname"/>
+
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username"/>
+
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email"/>
+
+    <label for="phone">Phone</label>
+    <input type="tel" id="phone" name="phone"/>
+
+    <label for="address">Address</label>
+    <input type="text" id="address" name="address"/>
+
+    <label for="city">City</label>
+    <input type="text" id="city" name="city"/>
+
+    <label for="zip">ZIP Code</label>
+    <input type="text" id="zip" name="zip"/>
+
+    <label for="gender">Gender</label>
+    <select id="gender" name="gender">
+      <option value="">Select</option>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+      <option value="nonbinary">Non-binary</option>
+    </select>
+
+    <label for="dob">Date of Birth (Date Input)</label>
+    <input type="date" id="dob" name="birth_date"/>
+
+
+
+    <footer>
+      © 2025 Autofill Test • Scroll to see all fields
+    </footer>
+  </div>
+</body>
+</html>

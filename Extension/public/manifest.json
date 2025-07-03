@@ -1,0 +1,39 @@
+{
+    "manifest_version": 3,
+    "name": "Sentinel Shield",
+    "version": "1.0",
+    "description": "A Chrome extension for breach detection and security analysis.",
+    "permissions": ["storage", "activeTab", "scripting","tabs","contextMenus",
+    "notifications",
+    "alarms"],
+
+    "host_permissions": [
+    "http://*/*",
+    "https://*/*",
+    "*://*/*"
+  ],
+    "background": {
+    "service_worker": "background.js",
+    "type": "module"
+}
+,
+    "action": {
+      "default_popup": "index.html",
+      "default_icon": "icon.png"
+    },
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+     "js": ["jsQR.js", "content.js"],
+        "run_at": "document_end"
+      }
+    ],
+    "web_accessible_resources": [
+  {
+    "resources": ["icon.png", "email.html", "email.js"],
+    "matches": ["<all_urls>"]
+  }
+]
+    
+  }
+  
